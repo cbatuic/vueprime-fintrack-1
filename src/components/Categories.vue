@@ -19,6 +19,7 @@ const categories = ref([
 ]);
 
 const editingCategory = ref(null);
+const newCategory = ref({ name: '', description: '' }); // New category object
 
 const editCategory = (category) => {
   editingCategory.value = { ...category.data }; // Set editingCategory to the selected category's data
@@ -43,6 +44,18 @@ const deleteCategory = (category) => {
   const index = categories.value.findIndex((c) => c.id === category.id);
   // Remove the category from the categories array
   categories.value.splice(index, 1);
+};
+
+const addCategory = () => {
+  if (newCategory.value.name && newCategory.value.description) {
+    // Generate a new unique ID (replace with your actual ID generation logic)
+    const newId = Math.max(...categories.value.map((c) => c.id)) + 1;
+    newCategory.value.id = newId;
+    categories.value.push({ ...newCategory.value });
+    // Clear the form for the next addition
+    newCategory.value.name = '';
+    newCategory.value.description = '';
+  }
 };
 </script>
 
@@ -75,6 +88,24 @@ const deleteCategory = (category) => {
         <div>
           <Button label="Save" icon="pi pi-check" class="p-button-success" type="submit" />
           <Button label="Cancel" icon="pi pi-times" class="p-button-secondary" @click="cancelEdit" />
+        </div>
+      </form>
+    </div>
+
+    <!-- Add Category Form -->
+    <div>
+      <h2>Add Category</h2>
+      <form @submit.prevent="addCategory">
+        <div>
+          <label for="newName">Name:</label>
+          <InputText id="newName" v-model="newCategory.name" />
+        </div>
+        <div>
+          <label for="newDescription">Description:</label>
+          <InputText id="newDescription" v-model="newCategory.description" />
+        </div>
+        <div>
+          <Button label="Add" icon="pi pi-plus" class="p-button-primary" type="submit" />
         </div>
       </form>
     </div>
