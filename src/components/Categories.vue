@@ -48,7 +48,7 @@ const deleteCategory = (category) => {
 
 <template>
   <div>
-    <h1>Categories</h1>
+    <h1>Categories (Display, Edit, Delete)</h1>
     <DataTable :value="categories" tableStyle="min-width: 50rem">
       <Column field="id" header="ID"></Column>
       <Column field="name" header="Name"></Column>
