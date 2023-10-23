@@ -10,7 +10,7 @@ $ npm run dev
 ```
 
 ### Display
-./main.js
+```./main.js```
 ```js
 import { createApp } from 'vue'
 //import './style.css'
@@ -22,7 +22,7 @@ import 'primeicons/primeicons.css';
 createApp(App).mount('#app')
 ```
 
-./App.vue
+```./App.vue```
 ```html
 <script setup>
 import Categories from './components/Categories.vue'
@@ -35,7 +35,7 @@ import Categories from './components/Categories.vue'
 <style scoped></style>
 ```
 
-./components/Categories.vue
+```./components/Categories.vue```
 ```html
 <script setup>
 import DataTable from 'primevue/datatable';
@@ -68,6 +68,12 @@ const categories = [
 
 <style scoped></style>
 ```
+
+### Edit and Delete
+![edit-delete](./fintrack-vueprime-edit-delete.gif)
+
+### Add
+![edit-delete-add](./fintrack-vueprime-edit-delete-add.gif)
 
 ### Template
 
